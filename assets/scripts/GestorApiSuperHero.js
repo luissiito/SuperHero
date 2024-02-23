@@ -145,4 +145,17 @@ export default class GestorApiSuperHero{
                          break;
         }
     }
+    añadirClaseCssALosIconosEscudoSegunGenero(gender){   
+        const iconosEscudo = document.querySelectorAll('#cuadroDePowerStats li i');
+        let colorDeEscudo = 'black';
+        switch(gender){
+            case 'Female': colorDeEscudo = 'pink';
+                           break;
+            case 'Male': colorDeEscudo = 'rgba(10, 176, 60, 0.7)';
+                         break;
+        }
+        for(let iconoEscudo of iconosEscudo){
+            iconoEscudo.style.color = colorDeEscudo;
+        }
+    }
 }

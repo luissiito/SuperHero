@@ -56,7 +56,7 @@ main .card .card-body ul.d-flex li{
     gap: 1.5em;   
     border-bottom-color: transparent;
     border-bottom-style: solid;
-    border-bottom-width: 4px; 
+    border-bottom-width: 2px; 
     padding: .3em;
 }
 main .card .card-body ul.d-flex li:hover{
@@ -110,8 +110,11 @@ main .card .card-body div#cuadroDeConnections p {
     color: gray;
 }
 main .female:hover {
-    box-shadow: 0 0 1.5em 1.5em rgba(216, 166, 232, 0.7);
+    box-shadow: 0 0 1.5em 1.5em rgba(176, 10, 100, 0.7);
 }
 main .male:hover {
-    box-shadow: 0 0 1.5em 1.5em rgba(30, 30, 30, 0.7);
+    box-shadow: 0 0 1.5em 1.5em rgba(10, 176, 60, 0.7);
+}
+main .seleccionado {
+    background-color: rgba(249, 9, 9, 0.7);
 }

@@ -24,6 +24,8 @@ $(function() {
         liPowerStats.on('click', function(){
             ocultarTodosLosCuadros();
             $('#cuadroDePowerStats').show();
+            removerClaseSeleccionadoATodasLasEtiquetasLi();
+            $(this).addClass('seleccionado');
         });
     }
 
@@ -31,6 +33,8 @@ $(function() {
         liBiography.on('click', function(){
             ocultarTodosLosCuadros();
             $('#cuadroDeBiography').show();
+            removerClaseSeleccionadoATodasLasEtiquetasLi();
+            $(this).addClass('seleccionado');
         });
     }
 
@@ -38,12 +42,16 @@ $(function() {
         liAppearance.on('click', function(){
             ocultarTodosLosCuadros();
             $('#cuadroDeAppearance').show();
+            removerClaseSeleccionadoATodasLasEtiquetasLi();
+            $(this).addClass('seleccionado');
         });
     }
     function añadirEventoClickAlLiConnections() {
         liConnections.on('click', function(){
             ocultarTodosLosCuadros();
             $('#cuadroDeConnections').show();
+            removerClaseSeleccionadoATodasLasEtiquetasLi();
+            $(this).addClass('seleccionado');
         });
     }
 
@@ -61,6 +69,7 @@ $(function() {
         }           
         cargarSuperHero(superHeroApi);       
         gestorApiSuperHero.añadirClaseCssALaCardSegunGenero(superHeroApi.appearance.gender); 
+        gestorApiSuperHero.añadirClaseCssALosIconosEscudoSegunGenero(superHeroApi.appearance.gender); 
     }
 
     function cargarSuperHero(superHeroApi){
@@ -108,6 +117,14 @@ $(function() {
         $('main img.imagenPrincipal').hide();
     }
 
+    function removerClaseSeleccionadoATodasLasEtiquetasLi(){
+        $(liPowerStats).removeClass('seleccionado');
+        $(liBiography).removeClass('seleccionado');
+        $(liAppearance).removeClass('seleccionado');
+        $(liConnections).removeClass('seleccionado');
+        $(liChart).removeClass('seleccionado');
+    }
+
     function iniciarAplicacionSuperHero(){ 
         ocultarCard();
         ocultarTodosLosCuadros();
@@ -127,6 +144,11 @@ $(function() {
 
     function validarSiEsNumero(valor){
         return isNaN(valor);
+    }
+    function validarSiEstaFueraDeRango(valor){
+        if(valor <= 0 || valor > 734){
+            console.log();            
+        }
     }
     iniciarAplicacionSuperHero(); 
 });
