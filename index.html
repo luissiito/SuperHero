@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis González">
+    <meta name="description" content="SuperHero API">
+    <title>SuperHero</title>
+
+    <link rel="icon" href="./assets/img/iconos/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/fe1956f1e0.js" crossorigin="anonymous"></script>
+  </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">Super<span>Hero</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraDeNavegacion" aria-controls="barraDeNavegacion" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="barraDeNavegacion">           
+            <form class="d-flex">
+              <input class="form-control me-2" type="text" placeholder="Buscar" aria-label="Text">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <img class="imagenPrincipal" src="./assets/img/sh1.jpg" alt="imagen superHero">
+        <div class="card">
+            <img>
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                <ul class="d-flex">
+                    <li>POWERSTATS</li>
+                    <li>BIOGRAPHY</li>
+                    <li>APPEARANCE</li>
+                    <li>CONNECTIONS</li>
+                    <li>CHART</li>
+                </ul>
+                <ul id="cuadroDePowerStats">
+                    <li><h6>INTELLIGENCE</h6></li>
+                    <li><h6>STRENGTH</h6></li>
+                    <li><h6>SPEED</h6></li>
+                    <li><h6>DURABILITY</h6></li>
+                    <li><h6>POWER</h6></li>
+                    <li><h6>COMBAT</h6></li>
+                </ul>
+                <ul id="cuadroDeBiography">
+                    <li><h6>FULL NAME</h6></li>
+                    <li><h6>ALTER EGOS</h6></li>
+                    <li><h6>ALIASES</h6></li>
+                    <li><h6>PLACE OF BIRTH</h6></li>
+                    <li><h6>APPEARANCE</h6></li>
+                    <li><h6>PUBLISHER</h6></li>
+                </ul>
+                <ul id="cuadroDeAppearance">
+                    <li><h6>GENDER</h6></li>
+                    <li><h6>RACE</h6></li>
+                    <li><h6>HEIGHT</h6></li>
+                    <li><h6>WEIGHT</h6></li>
+                    <li><h6>EYE COLOR</h6></li>
+                    <li><h6>HAIR COLOR</h6></li>
+                </ul>
+                <div id="cuadroDeConnections">
+                    <h5>GROUP AFFILIATION</h5>
+                    <p id="groupAffiliation"></p>
+                    <h5>RELATIVES</h5>
+                    <p id="relatives"></p>
+                </div>
+            </div>
+
+        </div>
+      </main>    
+</body>
+<script src="./assets/scripts/ajax.js"></script>
+<script src="./assets/scripts/GestorApiSuperHero.js" type="module"></script>
+<script src="./assets/scripts/main.js" type="module"></script>
+</html>

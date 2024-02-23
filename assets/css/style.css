@@ -1,0 +1,116 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Girassol&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Suranna&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;   
+    border-radius: 5px; 
+    font-family: 'montserrat', sans-serif;
+}
+
+nav.navbar{ 
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+nav.navbar .container-fluid a{ 
+    font-family: 'girassol';
+    font-size: 1.2em;
+}
+nav.navbar .container-fluid a span{ 
+    color:#c9594f;
+}
+
+main{   
+    height: 100%;
+    width: 100%;
+}
+main img{
+    height: 90.1vh;
+    width: 99.7vw;
+}
+main div.card{
+    background-color: black;
+    color: white;
+    flex-direction: row;
+    margin-bottom: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 2em;
+}
+main div.card:hover{
+    box-shadow: 0 0 1.5em 1.5em rgba(208, 155, 94, 0.7);
+}
+main div.card img{
+    width: 28%;
+    height: 100%;
+}
+main .card .card-body .card-title{
+    background-color: olivedrab;
+    letter-spacing: 3px;  
+    padding: .2em;
+    text-align: center;
+}
+main .card .card-body ul.d-flex{
+    border-bottom-color: gray;
+    border-bottom-style: solid;
+    border-bottom-width: .3px;
+    gap: 3em;   
+}
+main .card .card-body ul.d-flex li{
+    cursor: pointer;
+    gap: 1.5em;   
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: 4px; 
+    padding: .3em;
+}
+main .card .card-body ul.d-flex li:hover{
+    border-bottom-color: #c9594f;
+}
+main .card .card-body ul li {
+    list-style: none;
+}
+main .card .card-body ul:nth-child(n+3) li{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;  
+}
+main .card .card-body ul:nth-child(n+3) li{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;  
+}
+main .card .card-body ul:nth-child(n+3) li:hover{
+    background-color: gray;
+}
+main .card .card-body ul:nth-child(n+3) li:hover h6{
+    color: white;
+}
+main .card .card-body ul:nth-child(n+3) li h6{
+    color: gray;
+}
+main .card .card-body ul:nth-child(n+3) li p{
+    padding-left: 3em;
+    text-align: right;
+}
+main .card .card-body ul:nth-child(3) li :is(i,h6,p){
+    width: 33%;
+}
+main .card .card-body ul:nth-child(4) li:nth-child(3) p{
+    font-size: .85em;
+}
+main .card .card-body ul li p {
+    display: inline-block;
+    color: yellow;
+}
+main .card .card-body div#cuadroDeConnections h5 {
+    color: orange;
+    font-weight: lighter;
+}
+main .card .card-body div#cuadroDeConnections p {
+    color: gray;
+}
