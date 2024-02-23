@@ -9,7 +9,7 @@ $(function() {
     const liBiography = $('.card .card-body .d-flex li:nth-child(2)');
     const liAppearance = $('.card .card-body .d-flex li:nth-child(3)');
     const liConnections = $('.card .card-body .d-flex li:nth-child(4)');
-    const liChart = $('.card .card-body .d-flex li:nth-child(5)');    
+    const liChart = $('.card .card-body .d-flex li:nth-child(5)'); 
     let isAplicacionSuperHeroIniciada = false;
     
     function añadirEventoClickAlInputBuscar() {
@@ -54,6 +54,14 @@ $(function() {
             $(this).addClass('seleccionado');
         });
     }
+    function añadirEventoClickAlLiChart() {
+        liChart.on('click', function(){
+            ocultarTodosLosCuadros();
+            $('#cuadroDeChart').show();
+            removerClaseSeleccionadoATodasLasEtiquetasLi();
+            $(this).addClass('seleccionado');
+        });
+    }
 
     async function buscarSuperHero(){
         const superHeroApi = await getSuperHeroFromApi(txtIdNumero.val());            
@@ -80,6 +88,7 @@ $(function() {
         gestorApiSuperHero.setInfoBiography();
         gestorApiSuperHero.setInfoAppearance();
         gestorApiSuperHero.setInfoConnections();
+        gestorApiSuperHero.setInfoChart();
     }
 
     async function getSuperHeroFromApi(idSuperHero){
@@ -90,7 +99,7 @@ $(function() {
     function limpiarEtiquetasPDeLosCuadros(){
         const etiquetasPDelCuadroPowerStates = document.querySelectorAll('main .card .card-body p');
         for(let etiquetaP of etiquetasPDelCuadroPowerStates){
-            etiquetaP.textContent = '';
+            etiquetaP.remove();
         }
     }
 
@@ -111,6 +120,7 @@ $(function() {
         $('#cuadroDeBiography').hide();
         $('#cuadroDeAppearance').hide();
         $('#cuadroDeConnections').hide();
+        $('#cuadroDeChart').hide();
     }   
 
     function ocultarImagenPrincipal(){
@@ -132,7 +142,8 @@ $(function() {
         añadirEventoClickAlLiPowerStats();
         añadirEventoClickAlLiBiography();
         añadirEventoClickAlLiAppearance();
-        añadirEventoClickAlLiConnections();        
+        añadirEventoClickAlLiConnections();
+        añadirEventoClickAlLiChart();     
         gestorApiSuperHero.añadirIconoEscudoALasEtiquetasLiDelCuadroPowerStates();          
     }    
     

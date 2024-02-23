@@ -109,6 +109,17 @@ main .card .card-body div#cuadroDeConnections h5 {
 main .card .card-body div#cuadroDeConnections p {
     color: gray;
 }
+main .card .card-body div#cuadroDeChart .canvasjs-chart-container canvas{
+    background-color: transparent !important;
+    color: red !important;
+    height: 18.6em !important;
+    opacity: .7 !important;
+    position: static !important;
+    width: 100% !important;
+}
+main .card .card-body div#cuadroDeChart .canvasjs-chart-container canvas:nth-child(2){
+    display: none !important;
+}
 main .female:hover {
     box-shadow: 0 0 1.5em 1.5em rgba(176, 10, 100, 0.7);
 }
@@ -116,5 +127,8 @@ main .male:hover {
     box-shadow: 0 0 1.5em 1.5em rgba(10, 176, 60, 0.7);
 }
 main .seleccionado {
-    background-color: rgba(249, 9, 9, 0.7);
+    background-color: rgba(249, 9, 9, 0.8);
+    border-top-color: white;
+    border-top-style: solid;
+    border-top-width: 2px; 
 }

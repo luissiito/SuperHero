@@ -121,13 +121,41 @@ export default class GestorApiSuperHero{
         pGroupAffiliation.textContent = this.getSuperHero().connections['group-affiliation'];
         pRelatives.textContent = this.getSuperHero().connections.relatives;
     }
+
+    setInfoChart(){
+        const chart = new CanvasJS.Chart("cuadroDeChart", {
+            exportEnabled: true,
+            animationEnabled: true,
+            title:{
+                text: "POWERSTATS"
+            },
+            legend:{
+                cursor: "pointer"
+            },
+            data: [{
+                type: "pie",
+                showInLegend: true,
+                toolTipContent: "{name}: <strong>{y}%</strong>",
+                indexLabel: "{name} - {y}%",
+                dataPoints: [
+                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.intelligence, name: "INTELLIGENCE", exploded: true },
+                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.strength, name: "STRENGTH" },
+                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.speed, name: "SPEED" },
+                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.durability, name: "DURABILITY" },
+                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.power, name: "POWER" },
+                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.combat, name: "COMBAT" }
+                ]
+            }]
+        });
+        chart.render();
+    }
     
     añadirIconoEscudoALasEtiquetasLiDelCuadroPowerStates(){
         const etiquetasLiDelCuadroPowerStates = document.querySelectorAll('#cuadroDePowerStats li');
         for(let etiquetaLi of etiquetasLiDelCuadroPowerStates){
             const iconoEscudo = document.createElement('i');
             this.añadirPropiedadesAlIconoEscudo(iconoEscudo);
-            etiquetaLi.insertBefore(iconoEscudo,etiquetaLi.firstChild);
+            etiquetaLi.insertBefore(iconoEscudo, etiquetaLi.firstChild);
         }
     }
     añadirPropiedadesAlIconoEscudo(iconoEscudo){       
@@ -135,7 +163,6 @@ export default class GestorApiSuperHero{
         iconoEscudo.style.color = '#c9594f';
     }
     añadirClaseCssALaCardSegunGenero(gender){
-        console.log(gender)
         switch(gender){
             case 'Female': document.querySelector('main .card').classList.remove('male');
                            document.querySelector('main .card').classList.add('female');
@@ -149,7 +176,7 @@ export default class GestorApiSuperHero{
         const iconosEscudo = document.querySelectorAll('#cuadroDePowerStats li i');
         let colorDeEscudo = 'black';
         switch(gender){
-            case 'Female': colorDeEscudo = 'pink';
+            case 'Female': colorDeEscudo = 'purple';
                            break;
             case 'Male': colorDeEscudo = 'rgba(10, 176, 60, 0.7)';
                          break;
