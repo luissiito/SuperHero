@@ -53,13 +53,14 @@ $(function() {
         
         if(!isAplicacionSuperHeroIniciada){
             mostrarCard();
-            isAplicacionSuperHeroIniciada = true;
             mostrarCuadroDePowerStats();  
+            isAplicacionSuperHeroIniciada = true;
         }
         else{
             limpiarEtiquetasPDeLosCuadros();
         }           
-        cargarSuperHero(superHeroApi);        
+        cargarSuperHero(superHeroApi);       
+        gestorApiSuperHero.añadirClaseCssALaCardSegunGenero(superHeroApi.appearance.gender); 
     }
 
     function cargarSuperHero(superHeroApi){
@@ -117,6 +118,16 @@ $(function() {
         añadirEventoClickAlLiConnections();        
         gestorApiSuperHero.añadirIconoEscudoALasEtiquetasLiDelCuadroPowerStates();          
     }    
+    
+    function validarValorIngresadoPorElUsuario(valor){
+        if(!validarSiEsNumero(valor)){
+            alert('debes ingresar solo numero');
+        }
+    }
+
+    function validarSiEsNumero(valor){
+        return isNaN(valor);
+    }
     iniciarAplicacionSuperHero(); 
 });
 

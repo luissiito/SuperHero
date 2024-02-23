@@ -36,12 +36,12 @@ export default class GestorApiSuperHero{
         const pPower = document.createElement('p');
         const pCombat = document.createElement('p');
 
-        pIntelligence.textContent = `${this.getSuperHero().powerstats.intelligence}`;
-        pStrength.textContent = `${this.getSuperHero().powerstats.strength}`;
-        pSpeed.textContent = `${this.getSuperHero().powerstats.speed}`;
-        pDurability.textContent = `${this.getSuperHero().powerstats.durability}`;
-        pPower.textContent = `${this.getSuperHero().powerstats.power}`;
-        pCombat.textContent = `${this.getSuperHero().powerstats.combat}`;
+        pIntelligence.textContent = `${this.getSuperHero().powerstats.intelligence === 'null' ? 'Not informed' : this.getSuperHero().powerstats.intelligence}`;       
+        pStrength.textContent = `${this.getSuperHero().powerstats.strength === 'null' ? 'Not informed' : this.getSuperHero().powerstats.strength}`;
+        pSpeed.textContent = `${this.getSuperHero().powerstats.speed === 'null' ? 'Not informed' : this.getSuperHero().powerstats.speed}`;
+        pDurability.textContent = `${this.getSuperHero().powerstats.durability === 'null' ? 'Not informed' : this.getSuperHero().powerstats.durability}`;
+        pPower.textContent = `${this.getSuperHero().powerstats.power === 'null' ? 'Not informed' : this.getSuperHero().powerstats.power}`;
+        pCombat.textContent = `${this.getSuperHero().powerstats.combat === 'null' ? 'Not informed' : this.getSuperHero().powerstats.combat}`;
      
         liIntelligence.appendChild(pIntelligence);
         liStrength.appendChild(pStrength);
@@ -72,7 +72,7 @@ export default class GestorApiSuperHero{
         for(let i = 0; i < this.getSuperHero().biography.aliases.length; i++){
             pAliases.textContent += `${this.getSuperHero().biography.aliases[i]}. `;
         }
-        pPlaceOfBirth.textContent = `${this.getSuperHero().biography['place-of-birth']}`
+        pPlaceOfBirth.textContent = `${this.getSuperHero().biography['place-of-birth'] === '-' ? 'Not informed' : this.getSuperHero().appearance['place-of-birth']}`
         pFirstAppearance.textContent = `${this.getSuperHero().biography['first-appearance']}`
         pPublisher.textContent = `${this.getSuperHero().biography.publisher}`;
 
@@ -100,10 +100,10 @@ export default class GestorApiSuperHero{
         const pHairColor = document.createElement('p');
 
         pGender.textContent = `${this.getSuperHero().appearance.gender}`;
-        pRace.textContent = `${this.getSuperHero().appearance.race}`;
+        pRace.textContent = `${this.getSuperHero().appearance.race === 'null' ? 'Not informed' : this.getSuperHero().appearance.race}`;
         pHeight.textContent += `${this.getSuperHero().appearance.height[1]}`;
         pWeight.textContent = `${this.getSuperHero().appearance.weight[1]}`;
-        pEyeColor.textContent = `${this.getSuperHero().appearance['eye-color']}`;
+        pEyeColor.textContent = `${this.getSuperHero().appearance['eye-color'] === '-' ? 'Not informed' : this.getSuperHero().appearance['eye-color']}`;
         pHairColor.textContent = `${this.getSuperHero().appearance['hair-color']}`;
 
         liGender.appendChild(pGender);
@@ -133,5 +133,16 @@ export default class GestorApiSuperHero{
     añadirPropiedadesAlIconoEscudo(iconoEscudo){       
         iconoEscudo.className += 'fas fa-shield-virus fa-xl';
         iconoEscudo.style.color = '#c9594f';
+    }
+    añadirClaseCssALaCardSegunGenero(gender){
+        console.log(gender)
+        switch(gender){
+            case 'Female': document.querySelector('main .card').classList.remove('male');
+                           document.querySelector('main .card').classList.add('female');
+                           break;
+            case 'Male': document.querySelector('main .card').classList.remove('female');
+                         document.querySelector('main .card').classList.add('male');
+                         break;
+        }
     }
 }

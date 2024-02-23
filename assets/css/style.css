@@ -20,13 +20,10 @@ nav.navbar .container-fluid a span{
     color:#c9594f;
 }
 
-main{   
+main{       
     height: 100%;
     width: 100%;
-}
-main img{
-    height: 90.1vh;
-    width: 99.7vw;
+    text-align: center;
 }
 main div.card{
     background-color: black;
@@ -36,9 +33,7 @@ main div.card{
     margin-left: 2em;
     margin-right: 2em;
     margin-top: 2em;
-}
-main div.card:hover{
-    box-shadow: 0 0 1.5em 1.5em rgba(208, 155, 94, 0.7);
+    text-align: left;
 }
 main div.card img{
     width: 28%;
@@ -113,4 +108,10 @@ main .card .card-body div#cuadroDeConnections h5 {
 }
 main .card .card-body div#cuadroDeConnections p {
     color: gray;
+}
+main .female:hover {
+    box-shadow: 0 0 1.5em 1.5em rgba(216, 166, 232, 0.7);
+}
+main .male:hover {
+    box-shadow: 0 0 1.5em 1.5em rgba(30, 30, 30, 0.7);
 }
