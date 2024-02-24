@@ -98,6 +98,7 @@ $(function() {
 
     function limpiarEtiquetasPDeLosCuadros(){
         const etiquetasPDelCuadroPowerStates = document.querySelectorAll('main .card .card-body p');
+        console.log('function limpiarEtiquetasPDeLosCuadros()')
         for(let etiquetaP of etiquetasPDelCuadroPowerStates){
             etiquetaP.remove();
         }

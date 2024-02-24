@@ -19,6 +19,9 @@ nav.navbar .container-fluid a{
 nav.navbar .container-fluid a span{ 
     color:#c9594f;
 }
+nav.navbar .container-fluid .collapse form{
+    gap: 1em;
+}
 
 main{       
     height: 100%;
@@ -106,7 +109,7 @@ main .card .card-body div#cuadroDeConnections h5 {
     color: orange;
     font-weight: lighter;
 }
-main .card .card-body div#cuadroDeConnections p {
+main .card .card-body div#cuadroDeConnections :is(p, h6) {
     color: gray;
 }
 main .card .card-body div#cuadroDeChart .canvasjs-chart-container canvas{

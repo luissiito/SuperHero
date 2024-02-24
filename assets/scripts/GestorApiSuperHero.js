@@ -1,14 +1,21 @@
 export default class GestorApiSuperHero{
     constructor(){
         this.superHero = {};        
+        this.mensajeNotInformed = 'Not informed';
     } 
 
     getSuperHero(){
         return this.superHero;
     }
+    getMensajeNotInformed(){
+        return this.mensajeNotInformed;
+    }
 
     setSuperHero(nuevoSuperHero){
         this.superHero = nuevoSuperHero;
+    }
+    setMensajeNotInformed(nuevoMensajeNotInformed){
+        this.mensajeNotInformed= nuevoMensajeNotInformed;
     }
 
     setInfoImagen(){
@@ -36,12 +43,12 @@ export default class GestorApiSuperHero{
         const pPower = document.createElement('p');
         const pCombat = document.createElement('p');
 
-        pIntelligence.textContent = `${this.getSuperHero().powerstats.intelligence === 'null' ? 'Not informed' : this.getSuperHero().powerstats.intelligence}`;       
-        pStrength.textContent = `${this.getSuperHero().powerstats.strength === 'null' ? 'Not informed' : this.getSuperHero().powerstats.strength}`;
-        pSpeed.textContent = `${this.getSuperHero().powerstats.speed === 'null' ? 'Not informed' : this.getSuperHero().powerstats.speed}`;
-        pDurability.textContent = `${this.getSuperHero().powerstats.durability === 'null' ? 'Not informed' : this.getSuperHero().powerstats.durability}`;
-        pPower.textContent = `${this.getSuperHero().powerstats.power === 'null' ? 'Not informed' : this.getSuperHero().powerstats.power}`;
-        pCombat.textContent = `${this.getSuperHero().powerstats.combat === 'null' ? 'Not informed' : this.getSuperHero().powerstats.combat}`;
+        pIntelligence.textContent = `${this.getSuperHero().powerstats.intelligence === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().powerstats.intelligence}`;       
+        pStrength.textContent = `${this.getSuperHero().powerstats.strength === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().powerstats.strength}`;
+        pSpeed.textContent = `${this.getSuperHero().powerstats.speed === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().powerstats.speed}`;
+        pDurability.textContent = `${this.getSuperHero().powerstats.durability === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().powerstats.durability}`;
+        pPower.textContent = `${this.getSuperHero().powerstats.power === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().powerstats.power}`;
+        pCombat.textContent = `${this.getSuperHero().powerstats.combat === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().powerstats.combat}`;
      
         liIntelligence.appendChild(pIntelligence);
         liStrength.appendChild(pStrength);
@@ -72,7 +79,7 @@ export default class GestorApiSuperHero{
         for(let i = 0; i < this.getSuperHero().biography.aliases.length; i++){
             pAliases.textContent += `${this.getSuperHero().biography.aliases[i]}. `;
         }
-        pPlaceOfBirth.textContent = `${this.getSuperHero().biography['place-of-birth'] === '-' ? 'Not informed' : this.getSuperHero().appearance['place-of-birth']}`
+        pPlaceOfBirth.textContent = `${this.getSuperHero().biography['place-of-birth'] === '-' ? this.getMensajeNotInformed() : this.getSuperHero().biography['place-of-birth']}`
         pFirstAppearance.textContent = `${this.getSuperHero().biography['first-appearance']}`
         pPublisher.textContent = `${this.getSuperHero().biography.publisher}`;
 
@@ -100,11 +107,11 @@ export default class GestorApiSuperHero{
         const pHairColor = document.createElement('p');
 
         pGender.textContent = `${this.getSuperHero().appearance.gender}`;
-        pRace.textContent = `${this.getSuperHero().appearance.race === 'null' ? 'Not informed' : this.getSuperHero().appearance.race}`;
+        pRace.textContent = `${this.getSuperHero().appearance.race === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().appearance.race}`;
         pHeight.textContent += `${this.getSuperHero().appearance.height[1]}`;
         pWeight.textContent = `${this.getSuperHero().appearance.weight[1]}`;
-        pEyeColor.textContent = `${this.getSuperHero().appearance['eye-color'] === '-' ? 'Not informed' : this.getSuperHero().appearance['eye-color']}`;
-        pHairColor.textContent = `${this.getSuperHero().appearance['hair-color']}`;
+        pEyeColor.textContent = `${this.getSuperHero().appearance['eye-color'] === '-' ? this.getMensajeNotInformed() : this.getSuperHero().appearance['eye-color']}`;
+        pHairColor.textContent = `${this.getSuperHero().appearance['hair-color'] === '-' ? this.getMensajeNotInformed() : this.getSuperHero().appearance['hair-color']}`;
 
         liGender.appendChild(pGender);
         liRace.appendChild(pRace);
@@ -115,39 +122,15 @@ export default class GestorApiSuperHero{
     }
 
     setInfoConnections(){
-        const pGroupAffiliation = document.querySelector('#groupAffiliation');
-        const pRelatives = document.querySelector('#relatives');
+     const pGroupAffiliation = document.querySelector('#cuadroDeConnections #groupAffiliation');
+     const pRelatives = document.querySelector('#relatives');
 
-        pGroupAffiliation.textContent = this.getSuperHero().connections['group-affiliation'];
-        pRelatives.textContent = this.getSuperHero().connections.relatives;
+     pGroupAffiliation.textContent = `${this.getSuperHero().connections['group-affiliation'] === '-' ? this.getMensajeNotInformed() : this.getSuperHero().connections['group-affiliation']}`;
+     pRelatives.textContent = `${this.getSuperHero().connections.relatives === '-' ? this.getMensajeNotInformed() : this.getSuperHero().connections['relatives']}`;
     }
 
     setInfoChart(){
-        const chart = new CanvasJS.Chart("cuadroDeChart", {
-            exportEnabled: true,
-            animationEnabled: true,
-            title:{
-                text: "POWERSTATS"
-            },
-            legend:{
-                cursor: "pointer"
-            },
-            data: [{
-                type: "pie",
-                showInLegend: true,
-                toolTipContent: "{name}: <strong>{y}%</strong>",
-                indexLabel: "{name} - {y}%",
-                dataPoints: [
-                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.intelligence, name: "INTELLIGENCE", exploded: true },
-                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.strength, name: "STRENGTH" },
-                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.speed, name: "SPEED" },
-                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.durability, name: "DURABILITY" },
-                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.power, name: "POWER" },
-                    { y: this.getSuperHero().powerstats.intelligence === 'null' ? 1 : this.getSuperHero().powerstats.combat, name: "COMBAT" }
-                ]
-            }]
-        });
-        chart.render();
+        this.crearPieChart();  
     }
     
     añadirIconoEscudoALasEtiquetasLiDelCuadroPowerStates(){
@@ -185,4 +168,32 @@ export default class GestorApiSuperHero{
             iconoEscudo.style.color = colorDeEscudo;
         }
     }
+
+    crearPieChart() {
+        const chart = new CanvasJS.Chart("cuadroDeChart", {
+            exportEnabled: true,
+            animationEnabled: true,
+            title:{
+                text: "POWERSTATS PIE CHART"
+            },
+            legend:{
+                cursor: "pointer"
+            },
+            data: [{
+                type: "pie",
+                showInLegend: true,
+                toolTipContent: "{name}: <strong>{y}%</strong>",
+                indexLabel: "{name} - {y}%",
+                dataPoints: [
+                    { y: this.getSuperHero().powerstats.intelligence == 'null' ? 1 : this.getSuperHero().powerstats.intelligence, name: "INTELLIGENCE", exploded: true },
+                    { y: this.getSuperHero().powerstats.intelligence == 'null' ? 1 : this.getSuperHero().powerstats.strength, name: "STRENGTH" },
+                    { y: this.getSuperHero().powerstats.intelligence == 'null' ? 1 : this.getSuperHero().powerstats.speed, name: "SPEED" },
+                    { y: this.getSuperHero().powerstats.intelligence == 'null' ? 1 : this.getSuperHero().powerstats.durability, name: "DURABILITY" },
+                    { y: this.getSuperHero().powerstats.intelligence == 'null' ? 1 : this.getSuperHero().powerstats.power, name: "POWER" },
+                    { y: this.getSuperHero().powerstats.intelligence == 'null' ? 1 : this.getSuperHero().powerstats.combat, name: "COMBAT" }
+                ]
+            }]
+        });
+        chart.render();
+    }    
 }
