@@ -135,6 +135,9 @@ main .card .card-body div#cuadroDeChart .canvasjs-chart-container canvas{
 main .card .card-body div#cuadroDeChart .canvasjs-chart-container canvas:nth-child(2){
     display: none !important;
 }
+main .card .card-body div#cuadroDeChart .canvasjs-chart-container :is(.canvasjs-chart-toolbar, .canvasjs-chart-tooltip, .canvasjs-chart-credit){
+    display: none !important;
+}
 main .female:hover {
     box-shadow: 0 0 1.5em 1.5em rgba(176, 10, 100, 0.7);
 }
