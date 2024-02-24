@@ -47,8 +47,9 @@ main div.card{
     text-align: left;
 }
 main div.card img{
-    width: 28%;
+    width: 26vw;
     height: 28.2em;
+    object-fit: fill;
 }
 main .card .card-body .card-title{
     background-color: olivedrab;
