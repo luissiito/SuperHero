@@ -16,7 +16,7 @@ $(function() {
         botonBuscar.on('click', async function(e){
             e.preventDefault();
             ocultarImagenPrincipal();
-            buscarSuperHero();         
+            buscarSuperHero(txtIdNumero.val());         
         });
     }
     
@@ -63,8 +63,8 @@ $(function() {
         });
     }
 
-    async function buscarSuperHero(){
-        const superHeroApi = await getSuperHeroFromApi(txtIdNumero.val());            
+    async function buscarSuperHero(idSuperHero){
+        const superHeroApi = await getSuperHeroFromApiById(idSuperHero);            
         await Promise.resolve();
         
         if(!isAplicacionSuperHeroIniciada){
@@ -91,14 +91,13 @@ $(function() {
         gestorApiSuperHero.setInfoChart();
     }
 
-    async function getSuperHeroFromApi(idSuperHero){
+    async function getSuperHeroFromApiById(idSuperHero){
         let superHeroApi = await obtenerInformacionDesdeUnaApi(`https://superheroapi.com/api.php/4905856019427443/${idSuperHero}`);
         return superHeroApi;
     }   
 
     function limpiarEtiquetasPDeLosCuadros(){
         const etiquetasPDelCuadroPowerStates = document.querySelectorAll('main .card .card-body p');
-        console.log('function limpiarEtiquetasPDeLosCuadros()')
         for(let etiquetaP of etiquetasPDelCuadroPowerStates){
             etiquetaP.remove();
         }
@@ -157,11 +156,13 @@ $(function() {
     function validarSiEsNumero(valor){
         return isNaN(valor);
     }
+
     function validarSiEstaFueraDeRango(valor){
         if(valor <= 0 || valor > 734){
             console.log();            
         }
     }
+    
     iniciarAplicacionSuperHero(); 
 });
 

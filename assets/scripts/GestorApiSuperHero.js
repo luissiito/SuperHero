@@ -106,7 +106,7 @@ export default class GestorApiSuperHero{
         const pEyeColor = document.createElement('p');
         const pHairColor = document.createElement('p');
 
-        pGender.textContent = `${this.getSuperHero().appearance.gender}`;
+        pGender.textContent = `${this.getSuperHero().appearance.gender === '-' ? 'Unknown' : this.getSuperHero().appearance.gender}`;
         pRace.textContent = `${this.getSuperHero().appearance.race === 'null' ? this.getMensajeNotInformed() : this.getSuperHero().appearance.race}`;
         pHeight.textContent += `${this.getSuperHero().appearance.height[1]}`;
         pWeight.textContent = `${this.getSuperHero().appearance.weight[1]}`;
@@ -148,11 +148,15 @@ export default class GestorApiSuperHero{
     añadirClaseCssALaCardSegunGenero(gender){
         switch(gender){
             case 'Female': document.querySelector('main .card').classList.remove('male');
+                           document.querySelector('main .card').classList.remove('unknown');
                            document.querySelector('main .card').classList.add('female');
                            break;
             case 'Male': document.querySelector('main .card').classList.remove('female');
+                         document.querySelector('main .card').classList.remove('unknown');
                          document.querySelector('main .card').classList.add('male');
                          break;
+            default : document.querySelector('main .card').classList.add('unknown');
+                      break;
         }
     }
     añadirClaseCssALosIconosEscudoSegunGenero(gender){   
@@ -163,6 +167,7 @@ export default class GestorApiSuperHero{
                            break;
             case 'Male': colorDeEscudo = 'rgba(10, 176, 60, 0.7)';
                          break;
+            default : colorDeEscudo = 'rgba(201, 81, 17, 0.7)';
         }
         for(let iconoEscudo of iconosEscudo){
             iconoEscudo.style.color = colorDeEscudo;

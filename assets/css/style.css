@@ -9,12 +9,20 @@
 }
 
 nav.navbar{ 
+    background-color: black !important;
+    border-radius: 0;
     padding-left: 4em !important;
     padding-right: 4em !important;
 }
 nav.navbar .container-fluid a{ 
+    color: white;
     font-family: 'girassol';
-    font-size: 1.2em;
+    font-size: 1.4em;
+    width: 10em;
+}
+nav.navbar .container-fluid a:hover{ 
+    color: white;
+    font-weight: bolder;
 }
 nav.navbar .container-fluid a span{ 
     color:#c9594f;
@@ -40,7 +48,7 @@ main div.card{
 }
 main div.card img{
     width: 28%;
-    height: 100%;
+    height: 28.2em;
 }
 main .card .card-body .card-title{
     background-color: olivedrab;
@@ -98,6 +106,9 @@ main .card .card-body ul:nth-child(n+3) li p{
 main .card .card-body ul:nth-child(3) li :is(i,h6,p){
     width: 33%;
 }
+main .card .card-body ul:nth-child(3) li:hover i{
+    color: yellow !important;
+}
 main .card .card-body ul:nth-child(4) li:nth-child(3) p{
     font-size: .85em;
 }
@@ -128,6 +139,9 @@ main .female:hover {
 }
 main .male:hover {
     box-shadow: 0 0 1.5em 1.5em rgba(10, 176, 60, 0.7);
+}
+main .unknown:hover {
+    box-shadow: 0 0 1.5em 1.5em rgba(201, 81, 17, 0.7);
 }
 main .seleccionado {
     background-color: rgba(249, 9, 9, 0.8);
