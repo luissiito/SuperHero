@@ -132,6 +132,21 @@ export default class GestorApiSuperHero{
     setInfoChart(){
         this.crearPieChart();  
     }
+
+    setInfoIdentificador(){
+          const card= document.querySelector('main .card');
+          const cuadroDelIdentificador = document.createElement('div');   
+          const pIdentificador = document.createElement('p');
+          const h6Identificador = document.createElement('h6');
+
+          h6Identificador.textContent = 'id :';
+          pIdentificador.textContent = this.getSuperHero().id;
+          cuadroDelIdentificador.classList.add('identificadorDelSuperHero');
+
+          cuadroDelIdentificador.append(h6Identificador, pIdentificador );
+          card.appendChild(cuadroDelIdentificador);          
+
+    }
     
     añadirIconoEscudoALasEtiquetasLiDelCuadroPowerStates(){
         const etiquetasLiDelCuadroPowerStates = document.querySelectorAll('#cuadroDePowerStats li');
@@ -159,6 +174,7 @@ export default class GestorApiSuperHero{
                       break;
         }
     }
+    
     añadirClaseCssALosIconosEscudoSegunGenero(gender){   
         const iconosEscudo = document.querySelectorAll('#cuadroDePowerStats li i');
         let colorDeEscudo = 'black';
@@ -169,8 +185,19 @@ export default class GestorApiSuperHero{
                          break;
             default : colorDeEscudo = 'rgba(201, 81, 17, 0.7)';
         }
-        for(let iconoEscudo of iconosEscudo){
+        for(const iconoEscudo of iconosEscudo){
             iconoEscudo.style.color = colorDeEscudo;
+        }
+    }
+    añadirClaseCssAlCuadroDelIdentificadorSegunGenero(gender){   
+        const cuadroDelIdentificador= document.querySelector('main .card .identificadorDelSuperHero');
+        switch(gender){
+            case 'Female': cuadroDelIdentificador.classList.add('female');
+                           break;
+            case 'Male': cuadroDelIdentificador.classList.add('male');
+                         break;
+            default : cuadroDelIdentificador.classList.add('unknown');
+                      break;
         }
     }
 
@@ -205,7 +232,7 @@ export default class GestorApiSuperHero{
     playSonidoGameJump(){
         const sonidoSaltoUnoMario = new Audio();
         sonidoSaltoUnoMario.src = `./assets/audio/mixkit-arcade-game-jump-coin-216.wav`;
-        sonidoSaltoUnoMario.volume = 0.3;
+        sonidoSaltoUnoMario.volume = 0.2;
         sonidoSaltoUnoMario.play();
     }
 }

@@ -9,7 +9,7 @@ async function obtenerInformacionDesdeUnaApi(url){
             return data;
         },
         error: function(error){
-            datos = ['HUBO UN ERROR EN LA URL INGRESADA']
+            datos = 'HUBO UN ERROR EN LA URL INGRESADA';
             return datos;
         }
     };

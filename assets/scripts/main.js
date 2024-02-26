@@ -1,7 +1,5 @@
 import GestorApiSuperHero from "./GestorApiSuperHero.js";
 
-const gestorApiSuperHero = new GestorApiSuperHero();
-
 $(function() {
     const txtIdNumero = $('form input[type="text"]');
     const botonBuscar = $('form .btn[type="submit"]');;
@@ -10,6 +8,7 @@ $(function() {
     const liAppearance = $('.card .card-body .d-flex li:nth-child(3)');
     const liConnections = $('.card .card-body .d-flex li:nth-child(4)');
     const liChart = $('.card .card-body .d-flex li:nth-child(5)'); 
+    const gestorApiSuperHero = new GestorApiSuperHero();
     let isAplicacionSuperHeroIniciada = false;
     
     function añadirEventoClickAlInputBuscar() {
@@ -22,8 +21,8 @@ $(function() {
     
     function añadirEventoClickAlLiPowerStats() {
         liPowerStats.on('click', function(){
-            ocultarTodosLosCuadros();
             gestorApiSuperHero.playSonidoGameJump();
+            ocultarTodosLosCuadros();
             $('#cuadroDePowerStats').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -32,8 +31,8 @@ $(function() {
 
     function añadirEventoClickAlLiBiography() {
         liBiography.on('click', function(){
-            ocultarTodosLosCuadros();
             gestorApiSuperHero.playSonidoGameJump();
+            ocultarTodosLosCuadros();
             $('#cuadroDeBiography').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -42,8 +41,8 @@ $(function() {
 
     function añadirEventoClickAlLiAppearance() {
         liAppearance.on('click', function(){
-            ocultarTodosLosCuadros();
             gestorApiSuperHero.playSonidoGameJump();
+            ocultarTodosLosCuadros();
             $('#cuadroDeAppearance').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -51,8 +50,8 @@ $(function() {
     }
     function añadirEventoClickAlLiConnections() {
         liConnections.on('click', function(){
-            ocultarTodosLosCuadros();
             gestorApiSuperHero.playSonidoGameJump();
+            ocultarTodosLosCuadros();
             $('#cuadroDeConnections').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -60,8 +59,8 @@ $(function() {
     }
     function añadirEventoClickAlLiChart() {
         liChart.on('click', function(){
-            ocultarTodosLosCuadros();
             gestorApiSuperHero.playSonidoGameJump();
+            ocultarTodosLosCuadros();
             $('#cuadroDeChart').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -80,10 +79,13 @@ $(function() {
         }
         else{
             limpiarEtiquetasPDeLosCuadros();
+            removerCuadroDelIdenticadorSelSuperHero();
         }        
-        cargarSuperHero(superHeroApi);       
+        cargarSuperHero(superHeroApi);     
+        removerClasesCssAlIdentificadorDelSuperHero();  
         gestorApiSuperHero.añadirClaseCssALaCardSegunGenero(superHeroApi.appearance.gender); 
         gestorApiSuperHero.añadirClaseCssALosIconosEscudoSegunGenero(superHeroApi.appearance.gender); 
+        gestorApiSuperHero.añadirClaseCssAlCuadroDelIdentificadorSegunGenero(superHeroApi.appearance.gender); 
     }
 
     async function buscarPrimerSuperHero(){
@@ -93,10 +95,12 @@ $(function() {
         mostrarCard();
         mostrarCuadroDePowerStats();
         liPowerStats.addClass('seleccionado');
-        isAplicacionSuperHeroIniciada = true;        
-        cargarSuperHero(superHeroApi);       
+        isAplicacionSuperHeroIniciada = true;    
+        cargarSuperHero(superHeroApi);
+        removerClasesCssAlIdentificadorDelSuperHero();       
         gestorApiSuperHero.añadirClaseCssALaCardSegunGenero(superHeroApi.appearance.gender); 
         gestorApiSuperHero.añadirClaseCssALosIconosEscudoSegunGenero(superHeroApi.appearance.gender); 
+        gestorApiSuperHero.añadirClaseCssAlCuadroDelIdentificadorSegunGenero(superHeroApi.appearance.gender); 
     }
 
     function cargarSuperHero(superHeroApi){
@@ -108,6 +112,7 @@ $(function() {
         gestorApiSuperHero.setInfoAppearance();
         gestorApiSuperHero.setInfoConnections();
         gestorApiSuperHero.setInfoChart();
+        gestorApiSuperHero.setInfoIdentificador();
     }
 
     async function getSuperHeroFromApiById(idSuperHero){
@@ -125,6 +130,9 @@ $(function() {
             etiquetaP.remove();
         }
     }
+    function removerCuadroDelIdenticadorSelSuperHero(){
+        document.querySelector('main .card .identificadorDelSuperHero').remove();
+    }
 
     function mostrarCard(){        
         $('main div.card').show();        
@@ -139,11 +147,11 @@ $(function() {
     }
 
     function ocultarTodosLosCuadros(){
-        $('#cuadroDePowerStats').hide();
-        $('#cuadroDeBiography').hide();
-        $('#cuadroDeAppearance').hide();
-        $('#cuadroDeConnections').hide();
-        $('#cuadroDeChart').hide();
+        const cuadros = [$('#cuadroDePowerStats'), $('#cuadroDeBiography'), $('#cuadroDeAppearance'),
+                          $('#cuadroDeConnections'), $('#cuadroDeChart')];
+        for (const cuadro of cuadros){
+            cuadro.hide();
+        }
     }   
 
     function ocultarImagenPrincipal(){
@@ -157,16 +165,22 @@ $(function() {
         $(liConnections).removeClass('seleccionado');
         $(liChart).removeClass('seleccionado');
     }
+    function removerClasesCssAlIdentificadorDelSuperHero(){
+        $('main .card .identificadorDelSuperHero').removeClass('female, male');
+    }
 
-    function iniciarAplicacionSuperHero(){ 
-   /*      ocultarCard(); */
-        ocultarTodosLosCuadros();
-        buscarPrimerSuperHero();
+    function cambiarPlaceHolderDelInputBuscar(){
         txtIdNumero.val('1');
         setTimeout(()=>{
             txtIdNumero.val('');
-            txtIdNumero.attr("placeholder", "id del super hero");
-        }, 1500);
+            txtIdNumero.attr("placeholder", "número de super hero");
+        }, 1200);
+    }
+
+    function iniciarAplicacionSuperHero(){ 
+        ocultarTodosLosCuadros();
+        buscarPrimerSuperHero();
+        cambiarPlaceHolderDelInputBuscar();
         añadirEventoClickAlInputBuscar();
         añadirEventoClickAlLiPowerStats();
         añadirEventoClickAlLiBiography();

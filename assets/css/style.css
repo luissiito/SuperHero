@@ -94,8 +94,9 @@ main .card .card-body ul:nth-child(n+3) li{
 main .card .card-body ul:nth-child(n+3) li:hover{
     background-color: gray;
 }
-main .card .card-body ul:nth-child(n+3) li:hover h6{
+main .card .card-body ul:nth-child(n+3) li:hover :is(h6,p){
     color: white;
+    font-weight: bolder;
 }
 main .card .card-body ul:nth-child(n+3) li h6{
     color: gray;
@@ -138,6 +139,9 @@ main .card .card-body div#cuadroDeChart .canvasjs-chart-container canvas:nth-chi
 main .card .card-body div#cuadroDeChart .canvasjs-chart-container :is(.canvasjs-chart-toolbar, .canvasjs-chart-tooltip, .canvasjs-chart-credit){
     display: none !important;
 }
+main .male {
+    background-color:  rgba(10, 176, 60, 0.7);
+}
 main .female:hover {
     box-shadow: 0 0 1.5em 1.5em rgba(176, 10, 100, 0.7);
 }
@@ -152,4 +156,35 @@ main .seleccionado {
     border-top-color: white;
     border-top-style: solid;
     border-top-width: 2px; 
+}
+main div.identificadorDelSuperHero {   
+    border-radius: 0; 
+    border-top-right-radius: 3px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: .05em;
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .5em;
+    position: absolute;
+    bottom: 0;
+}
+main div.identificadorDelSuperHero:hover :is(h6, p) {   
+    color: yellow;
+}
+main div.identificadorDelSuperHero.female{ 
+    background-color: rgba(176, 10, 100, 0.7);
+}
+main div.identificadorDelSuperHero.male{ 
+    background-color: rgba(10, 176, 60, 0.7);
+}
+main div.identificadorDelSuperHero.unknown{ 
+    background-color: rgba(201, 81, 17, 0.7);
+}
+main .identificadorDelSuperHero :is(h6, p){ 
+    color: black;
+    font-weight: bolder; 
+    margin: 0;
+    padding: .1em;
+    text-align: center;
 }
