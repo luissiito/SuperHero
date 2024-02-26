@@ -1,0 +1,33 @@
+
+.modalDeInformacion{
+    align-items: center ;
+    background-color: blue;
+    display: grid;
+    height: 100vh;
+    justify-items: center;
+    opacity: 0.8;
+    position: absolute;
+    width: 100vw;z-index: 5;
+    top: 0;
+}
+.modalDeInformacion .contenedor{    
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    padding: 3em;
+}
+.modalDeInformacion .contenedor :is(input, p){
+    padding: 1em;
+}
+.modalDeInformacion .contenedor p{
+    color: yellow;
+    font-size: 1.5em;
+}
+.modalDeInformacion .contenedor input[type='submit']{
+    background-color: rgba(10, 176, 60, 0.7);
+    cursor: pointer;
+}
+.modalDeInformacion .contenedor input[type='submit']:hover{
+    color: white;
+}

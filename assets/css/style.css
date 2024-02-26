@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Girassol&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Suranna&display=swap');
+@import './modalDeInformacion.css';
 
 *{
     margin: 0;
@@ -16,6 +17,7 @@ nav.navbar{
 }
 nav.navbar .container-fluid a{ 
     color: white;
+    cursor: pointer;
     font-family: 'girassol';
     font-size: 1.4em;
     width: 10em;

@@ -8,13 +8,14 @@ $(function() {
     const liAppearance = $('.card .card-body .d-flex li:nth-child(3)');
     const liConnections = $('.card .card-body .d-flex li:nth-child(4)');
     const liChart = $('.card .card-body .d-flex li:nth-child(5)'); 
-    const gestorApiSuperHero = new GestorApiSuperHero();
+    const gestorApiSuperHero = new GestorApiSuperHero();   
     let isAplicacionSuperHeroIniciada = false;
     
     function añadirEventoClickAlInputBuscar() {
         botonBuscar.on('click', async function(e){
             e.preventDefault();
             ocultarImagenPrincipal();
+            validarValorIngresadoPorElUsuario(txtIdNumero.val());
             buscarSuperHero(txtIdNumero.val());         
         });
     }
@@ -64,6 +65,13 @@ $(function() {
             $('#cuadroDeChart').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
+        });
+    }
+    function añadirEventoClickAlInputSubmitDelModalDeInformacion() {
+        const botonSubmitModalDeInformacion = $('body .modalDeInformacion .contenedor input[type="submit"]'); 
+        botonSubmitModalDeInformacion.on('click', function(){   
+            removerModalDeInformacion();
+
         });
     }
 
@@ -186,17 +194,18 @@ $(function() {
         añadirEventoClickAlLiBiography();
         añadirEventoClickAlLiAppearance();
         añadirEventoClickAlLiConnections();
-        añadirEventoClickAlLiChart();     
+        añadirEventoClickAlLiChart();   
         gestorApiSuperHero.añadirIconoEscudoALasEtiquetasLiDelCuadroPowerStates();          
     }    
     
-    function validarValorIngresadoPorElUsuario(valor){
-        if(!validarSiEsNumero(valor)){
-            alert('debes ingresar sólo números');
-        }
+    function validarValorIngresadoPorElUsuario(valor){  
+        if(validarSiEsUnNumero(valor)){ 
+            crearModalDeInformacion('Debes ingresar sólo números');
+            añadirEventoClickAlInputSubmitDelModalDeInformacion();  
+         }
     }
 
-    function validarSiEsNumero(valor){
+    function validarSiEsUnNumero(valor){
         return isNaN(valor);
     }
 
@@ -205,7 +214,29 @@ $(function() {
             console.log();            
         }
     }
+
+    function crearModalDeInformacion(informacion){
+        const cuadroDelModalDeInformacion = document.createElement('div');
+        const contenedor = document.createElement('div');
+        const botonAceptar = document.createElement('input');
+        const pInformacion = document.createElement('p');
+        botonAceptar.type = 'submit';
+        botonAceptar.value = 'Entendido';
+        pInformacion.textContent = informacion;
+        contenedor.classList.add('contenedor');
+        cuadroDelModalDeInformacion.classList.add('modalDeInformacion');
+        contenedor.append(pInformacion, botonAceptar);
+        cuadroDelModalDeInformacion.append(contenedor);
+        document.querySelector('body').appendChild(cuadroDelModalDeInformacion);        
+    }    
     
+    function removerModalDeInformacion(){
+        console.log('removiendo modalDeInformacion')
+        document.querySelector('body .modalDeInformacion').remove(); 
+        buscarPrimerSuperHero();
+        cambiarPlaceHolderDelInputBuscar();
+    }
+
     iniciarAplicacionSuperHero(); 
 });
 
