@@ -23,6 +23,7 @@ $(function() {
     function añadirEventoClickAlLiPowerStats() {
         liPowerStats.on('click', function(){
             ocultarTodosLosCuadros();
+            gestorApiSuperHero.playSonidoSaltoUnoMario();
             $('#cuadroDePowerStats').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -32,6 +33,7 @@ $(function() {
     function añadirEventoClickAlLiBiography() {
         liBiography.on('click', function(){
             ocultarTodosLosCuadros();
+            gestorApiSuperHero.playSonidoSaltoUnoMario();
             $('#cuadroDeBiography').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -41,6 +43,7 @@ $(function() {
     function añadirEventoClickAlLiAppearance() {
         liAppearance.on('click', function(){
             ocultarTodosLosCuadros();
+            gestorApiSuperHero.playSonidoSaltoUnoMario();
             $('#cuadroDeAppearance').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -49,6 +52,7 @@ $(function() {
     function añadirEventoClickAlLiConnections() {
         liConnections.on('click', function(){
             ocultarTodosLosCuadros();
+            gestorApiSuperHero.playSonidoSaltoUnoMario();
             $('#cuadroDeConnections').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -57,6 +61,7 @@ $(function() {
     function añadirEventoClickAlLiChart() {
         liChart.on('click', function(){
             ocultarTodosLosCuadros();
+            gestorApiSuperHero.playSonidoSaltoUnoMario();
             $('#cuadroDeChart').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -70,6 +75,7 @@ $(function() {
         if(!isAplicacionSuperHeroIniciada){
             mostrarCard();
             mostrarCuadroDePowerStats();  
+            liPowerStats.addClass('seleccionado');
             isAplicacionSuperHeroIniciada = true;
         }
         else{

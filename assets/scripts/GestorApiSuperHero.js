@@ -201,4 +201,11 @@ export default class GestorApiSuperHero{
         });
         chart.render();
     }    
+
+    playSonidoSaltoUnoMario(){
+        const sonidoSaltoUnoMario = new Audio();
+        sonidoSaltoUnoMario.src = `./assets/audio/salto1Mario.mp3`;
+        sonidoSaltoUnoMario.volume = 0.2;
+        sonidoSaltoUnoMario.play();
+    }
 }
