@@ -202,10 +202,10 @@ export default class GestorApiSuperHero{
         chart.render();
     }    
 
-    playSonidoSaltoUnoMario(){
+    playSonidoGameJump(){
         const sonidoSaltoUnoMario = new Audio();
-        sonidoSaltoUnoMario.src = `./assets/audio/salto1Mario.mp3`;
-        sonidoSaltoUnoMario.volume = 0.2;
+        sonidoSaltoUnoMario.src = `./assets/audio/mixkit-arcade-game-jump-coin-216.wav`;
+        sonidoSaltoUnoMario.volume = 0.3;
         sonidoSaltoUnoMario.play();
     }
 }

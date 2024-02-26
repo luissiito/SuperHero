@@ -23,7 +23,7 @@ $(function() {
     function añadirEventoClickAlLiPowerStats() {
         liPowerStats.on('click', function(){
             ocultarTodosLosCuadros();
-            gestorApiSuperHero.playSonidoSaltoUnoMario();
+            gestorApiSuperHero.playSonidoGameJump();
             $('#cuadroDePowerStats').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -33,7 +33,7 @@ $(function() {
     function añadirEventoClickAlLiBiography() {
         liBiography.on('click', function(){
             ocultarTodosLosCuadros();
-            gestorApiSuperHero.playSonidoSaltoUnoMario();
+            gestorApiSuperHero.playSonidoGameJump();
             $('#cuadroDeBiography').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -43,7 +43,7 @@ $(function() {
     function añadirEventoClickAlLiAppearance() {
         liAppearance.on('click', function(){
             ocultarTodosLosCuadros();
-            gestorApiSuperHero.playSonidoSaltoUnoMario();
+            gestorApiSuperHero.playSonidoGameJump();
             $('#cuadroDeAppearance').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -52,7 +52,7 @@ $(function() {
     function añadirEventoClickAlLiConnections() {
         liConnections.on('click', function(){
             ocultarTodosLosCuadros();
-            gestorApiSuperHero.playSonidoSaltoUnoMario();
+            gestorApiSuperHero.playSonidoGameJump();
             $('#cuadroDeConnections').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -61,7 +61,7 @@ $(function() {
     function añadirEventoClickAlLiChart() {
         liChart.on('click', function(){
             ocultarTodosLosCuadros();
-            gestorApiSuperHero.playSonidoSaltoUnoMario();
+            gestorApiSuperHero.playSonidoGameJump();
             $('#cuadroDeChart').show();
             removerClaseSeleccionadoATodasLasEtiquetasLi();
             $(this).addClass('seleccionado');
@@ -162,6 +162,11 @@ $(function() {
    /*      ocultarCard(); */
         ocultarTodosLosCuadros();
         buscarPrimerSuperHero();
+        txtIdNumero.val('1');
+        setTimeout(()=>{
+            txtIdNumero.val('');
+            txtIdNumero.attr("placeholder", "id del super hero");
+        }, 1500);
         añadirEventoClickAlInputBuscar();
         añadirEventoClickAlLiPowerStats();
         añadirEventoClickAlLiBiography();
