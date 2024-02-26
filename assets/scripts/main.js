@@ -72,7 +72,7 @@ $(function() {
         const superHeroApi = await getSuperHeroFromApiById(idSuperHero);            
         await Promise.resolve();
         
-        if(!isAplicacionSuperHeroIniciada){
+       if(!isAplicacionSuperHeroIniciada){
             mostrarCard();
             mostrarCuadroDePowerStats();  
             liPowerStats.addClass('seleccionado');
@@ -80,7 +80,20 @@ $(function() {
         }
         else{
             limpiarEtiquetasPDeLosCuadros();
-        }           
+        }        
+        cargarSuperHero(superHeroApi);       
+        gestorApiSuperHero.añadirClaseCssALaCardSegunGenero(superHeroApi.appearance.gender); 
+        gestorApiSuperHero.añadirClaseCssALosIconosEscudoSegunGenero(superHeroApi.appearance.gender); 
+    }
+
+    async function buscarPrimerSuperHero(){
+        const superHeroApi = await getFirstSuperHeroFromApiById();  
+        await Promise.resolve();        
+
+        mostrarCard();
+        mostrarCuadroDePowerStats();
+        liPowerStats.addClass('seleccionado');
+        isAplicacionSuperHeroIniciada = true;        
         cargarSuperHero(superHeroApi);       
         gestorApiSuperHero.añadirClaseCssALaCardSegunGenero(superHeroApi.appearance.gender); 
         gestorApiSuperHero.añadirClaseCssALosIconosEscudoSegunGenero(superHeroApi.appearance.gender); 
@@ -99,6 +112,10 @@ $(function() {
 
     async function getSuperHeroFromApiById(idSuperHero){
         let superHeroApi = await obtenerInformacionDesdeUnaApi(`https://superheroapi.com/api.php/4905856019427443/${idSuperHero}`);
+        return superHeroApi;
+    }   
+    async function getFirstSuperHeroFromApiById(){
+        let superHeroApi = await obtenerInformacionDesdeUnaApi(`https://superheroapi.com/api.php/4905856019427443/1`);
         return superHeroApi;
     }   
 
@@ -142,8 +159,9 @@ $(function() {
     }
 
     function iniciarAplicacionSuperHero(){ 
-        ocultarCard();
+   /*      ocultarCard(); */
         ocultarTodosLosCuadros();
+        buscarPrimerSuperHero();
         añadirEventoClickAlInputBuscar();
         añadirEventoClickAlLiPowerStats();
         añadirEventoClickAlLiBiography();
@@ -155,7 +173,7 @@ $(function() {
     
     function validarValorIngresadoPorElUsuario(valor){
         if(!validarSiEsNumero(valor)){
-            alert('debes ingresar solo numero');
+            alert('debes ingresar sólo números');
         }
     }
 
