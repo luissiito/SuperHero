@@ -71,8 +71,9 @@ $(function() {
         const botonSubmitModalDeInformacion = $('body .modalDeInformacion .contenedor input[type="submit"]'); 
         botonSubmitModalDeInformacion.on('click', function(){   
             removerModalDeInformacion();
-
-        });
+            removerClaseSeleccionadoATodasLasEtiquetasLi();
+            ocultarTodosLosCuadros();  
+         });
     }
 
     async function buscarSuperHero(idSuperHero){
@@ -200,9 +201,10 @@ $(function() {
     
     function validarValorIngresadoPorElUsuario(valor){  
         if(validarSiEsUnNumero(valor)){ 
-            crearModalDeInformacion('Debes ingresar sólo números');
-            añadirEventoClickAlInputSubmitDelModalDeInformacion();  
+            crearModalDeInformacion('DEBES INGRESAR SÓLO NÚMEROS'); 
          }
+         validarSiEstaFueraDeRango(valor);
+         añadirEventoClickAlInputSubmitDelModalDeInformacion(); 
     }
 
     function validarSiEsUnNumero(valor){
@@ -210,8 +212,8 @@ $(function() {
     }
 
     function validarSiEstaFueraDeRango(valor){
-        if(valor <= 0 || valor > 734){
-            console.log();            
+        if(valor <= 0 || valor > 732){
+            crearModalDeInformacion('DEBES INGRESAR NÚMEROS DESDE EL 1 HASTA EL 732.');             
         }
     }
 
